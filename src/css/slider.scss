@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
+.containerSlider {
+  grid-column: span 4;
+  background-image: url(../assets/prueba.jpg);
+  -moz-background-size: 100% 100%; /*Firefox 3.6*/
+  -o-background-size: 100% 100%; /*opera*/
+  -webkit-background-size: 100% 100%; /*Safari*/
+  background-size: 100% 100%; /*estandar css3*/
+  -webkit-box-shadow: inset 0px 10px 36px 35px #242424;
+  box-shadow: inset 0px 10px 36px 35px #242424;
+}
+.containerSlider .contentSlider {
+  background: linear-gradient(to right, #242424, transparent);
+  height: 100%;
+  padding: 3rem 5rem;
+  width: 70%;
+ display: flex;
+ flex-direction: column;
+ flex-wrap: wrap;
+}
+.containerSlider .title {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 700;
+  font-family: "Bangers", cursive;
+}
+.containerSlider .description{
+    padding: 1rem 0;
+}
+
+.containerSlider .genero{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .7rem;
+}
+
+.button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    color: #0f1923;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all .15s ease;
+  }
+  
+  .button::before,
+  .button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: calc(50% - 5px);
+    border: 1px solid #7D8082;
+    transition: all .15s ease;
+  }
+  
+  .button::before {
+    top: 0;
+    border-bottom-width: 0;
+  }
+  
+  .button::after {
+    bottom: 0;
+    border-top-width: 0;
+  }
+  
+  .button:active,
+  .button:focus {
+    outline: none;
+  }
+  
+  .button:active::before,
+  .button:active::after {
+    right: 3px;
+    left: 3px;
+  }
+  
+  .button:active::before {
+    top: 3px;
+  }
+  
+  .button:active::after {
+    bottom: 3px;
+  }
+  
+  .button_lg {
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #0f1923;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+  }
+  
+  .button_lg::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background-color: #0f1923;
+  }
+  
+  .button_lg::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 4px;
+    height: 4px;
+    background-color: #0f1923;
+    transition: all .2s ease;
+  }
+  
+  .button_sl {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: -1px;
+    left: -8px;
+    width: 0;
+    background-color: #ff4655;
+    transform: skew(-15deg);
+    transition: all .2s ease;
+  }
+  
+  .button_text {
+    position: relative;
+  }
+  
+  .button:hover {
+    color: #0f1923;
+  }
+  
+  .button:hover .button_sl {
+    width: calc(100% + 15px);
+  }
+  
+  .button:hover .button_lg::after {
+    background-color: #fff;
+  }
+
+  @media (max-width:900px){
+    .containerSlider .contentSlider {
+        width: 100%;
+      }
+}

@@ -1,0 +1,29 @@
+#root{
+  --color-main:  #fc4664 ;
+}
+
+.container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 20% 70% 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 1rem; 
+  background: #242424;
+  color: #f4f6f7 ;
+  gap: 1rem;
+  min-height: 100vh;
+}
+.container .titleRela{
+  grid-column: span 4;
+  padding: 2rem 2rem;
+}
+.titleRela span{
+  font-size: 2rem;
+}
+.container .items{
+  grid-column: span 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
