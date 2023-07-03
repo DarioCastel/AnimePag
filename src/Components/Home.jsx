@@ -20,14 +20,12 @@ const [list, setList] = useState([])
   .then(Response=>{
     const dataListAnime=Response.data.data;
     setList(dataListAnime)
-    console.log(dataListAnime)
   })
   .catch(error =>{
     Swal.fire(`Se produjo un error ${error}`)
   })
   }, [setList])
   
-
   
 
 
@@ -45,7 +43,7 @@ const [list, setList] = useState([])
       <div className="items">
         {list.map((animeOne, idx)=>{
           return(
-            <Item key={idx} title={animeOne.title} img={animeOne.images.jpg.image_url}/>
+            <Item key={idx} title={animeOne.title} img={animeOne.images.jpg.image_url} genres={animeOne.genres}/>
           )
         })}
       </div>

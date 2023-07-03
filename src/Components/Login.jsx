@@ -55,7 +55,7 @@ const Login = () => {
               <input type="password" name="passbox"/>
               <label>Contraseña</label>
             </div>
-            <button>Ingresar</button>
+            <button className="btnlogin">Ingresar</button>
           </form>
         </div>
       </div>

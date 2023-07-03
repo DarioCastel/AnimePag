@@ -1,9 +1,9 @@
 import '../css/genero.scss'
 
-const Genero = ({genero}) => {
+const Genero = ({nombre}) => {
   return (
     <div className="containerGenero">
-        <span>{genero}</span>
+        <span>{nombre}</span>
     </div>
   )
 }
