@@ -1,11 +1,11 @@
 import '../css/item.scss'
 import Portada from '../assets/prueba2.jpg'
 
-const Item = () => {
+const Item = ({title, img}) => {
   return (
     <div className="containerItem">
-        <img src={Portada} alt="image" />
-        <span>Demon Slayer Sesson 1</span>
+        <img src={img} alt="image" />
+        <span>{title}</span>
         <button className="button">
           <span className="button_lg">
             <span className="button_sl"></span>
