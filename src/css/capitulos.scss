@@ -1,0 +1,19 @@
+.containerEpisodes{
+    display: flex;
+    align-items: center;
+    margin:  0 auto ;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1.2rem;
+    z-index: 100;
+}
+.containerEpisodes .btnEpisodes{
+    width: 45%;
+}
+
+ @media (max-width: 900px){
+    .containerEpisodes .btnEpisodes{
+        width: 100%;
+    }
+ }

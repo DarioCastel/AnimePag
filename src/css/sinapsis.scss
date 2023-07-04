@@ -1,0 +1,43 @@
+.contentSynopsis{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.contentSynopsis p{
+    font-size: 1.2rem;
+    text-align: justify;
+    opacity: 70%;
+}
+hr{
+    width: 100%;
+    margin: 1rem;
+}
+.contentSynopsis .detallSynopsis{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+.detallSynopsis .dataSynopsis{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.dataSynopsis .spanDataSynopsis{
+    font-size: 1.1rem;
+    opacity: 70%;
+}
+.sectionGenSynopsis{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+@media (max-width:900px){
+    .contentSynopsis .detallSynopsis{
+        flex-wrap: wrap;
+    }
+}

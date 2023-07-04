@@ -3,6 +3,7 @@ import "../css/slider.scss";
 import Genero from "./Genero";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const Slider = () => {
@@ -42,14 +43,16 @@ const Slider = () => {
         <div className="description">
           {list.synopsis}
         </div>
-        <div className="btnSee">
-          <button className="button">
-            <span className="button_lg">
-              <span className="button_sl"></span>
-              <span className="button_text">see more</span>
-            </span>
-          </button>
-        </div>
+        <Link to={`/detalle?id=${list.mal_id}`}>
+          <div className="btnSee">
+            <button className="button">
+              <span className="button_lg">
+                <span className="button_sl"></span>
+                <span className="button_text">see more</span>
+              </span>
+            </button>
+          </div>
+        </Link>
       </div>
     </div>
   );

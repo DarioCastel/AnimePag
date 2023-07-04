@@ -67,7 +67,10 @@ form input{
     z-index: 1;
     transition: .3s all;
    }
-   
+   .btn.active{
+    background: #ff8d8d;
+   }
+
    .btn::before {
     content: "";
     position: absolute;

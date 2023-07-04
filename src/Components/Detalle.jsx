@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import Sinapsis from "./Sinapsis";
+import Trailer from "./Trailer";
+import Capitulos from "./Capitulos";
 
 const Details = () => {
 
@@ -14,6 +17,7 @@ const Details = () => {
     var idAnime = urlParams.get('id');
 
     const [list, setList] = useState([])
+    const [menu, setMenu] = useState("sinapsis")
 
   const endPoint=`https://api.jikan.moe/v4/anime/${idAnime}/full`
 
@@ -29,6 +33,8 @@ const Details = () => {
   })
   }, [setList])
   console.log(list)
+
+
   return (
     <>
       <div className="container">
@@ -62,8 +68,21 @@ const Details = () => {
             </div>
             <div className="infoDetail borderSection">
                 <div className="backColor">
-
-                informacion
+                  <div className="btncontainer">
+                    <button className={`btn back ${menu=== "sinapsis"?"active":""}`} onClick={()=>{setMenu("sinapsis")}}>Synopsis</button>
+                    <button className={`btn back ${menu=== "trailer"?"active":""}`} onClick={()=>{setMenu("trailer")}}>Trailer</button>
+                    <button className={`btn back ${menu=== "capitulos"?"active":""}`} onClick={()=>{setMenu("capitulos")}}>Episodes</button>
+                  </div>
+                {menu === "sinapsis" && <Sinapsis 
+                synopsis={list.synopsis} 
+                score={list.score}
+                episodes={list.episodes}
+                status={list.status}
+                year={list.year}
+                genres={list.genres}
+                />}
+                {menu === "trailer" && <Trailer trailer={list.trailer.url}/>}
+                {menu === "capitulos" && <Capitulos id={list.mal_id}/>}
                 </div>
             </div>
           </div>
