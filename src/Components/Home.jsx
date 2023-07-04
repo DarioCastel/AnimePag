@@ -26,7 +26,7 @@ const [list, setList] = useState([])
   })
   }, [setList])
   
-  
+  console.log(list)
 
 
 
@@ -43,7 +43,7 @@ const [list, setList] = useState([])
       <div className="items">
         {list.map((animeOne, idx)=>{
           return(
-            <Item key={idx} title={animeOne.title} img={animeOne.images.jpg.image_url} genres={animeOne.genres}/>
+            <Item animeId={animeOne.mal_id} key={idx} title={animeOne.title} img={animeOne.images.jpg.image_url} genres={animeOne.genres}/>
           )
         })}
       </div>
