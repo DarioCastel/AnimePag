@@ -17,7 +17,6 @@ const Slider = () => {
   .then(Response=>{
     const dataListAnime=Response.data.data;
     setList(dataListAnime.slice(0, 1).shift())
-    console.log(list)
     
   })
   .catch(error =>{

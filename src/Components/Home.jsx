@@ -25,8 +25,6 @@ const [list, setList] = useState([])
     Swal.fire(`Se produjo un error ${error}`)
   })
   }, [setList])
-  
-  console.log(list)
 
 
 

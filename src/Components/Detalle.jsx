@@ -32,7 +32,6 @@ const Details = () => {
     Swal.fire(`Se produjo un error ${error}`)
   })
   }, [setList])
-  console.log(list)
 
 
   return (
