@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../css/head.scss'
 import { BiSearchAlt } from "react-icons/bi";
-import { TbArrowBigRightLineFilled } from "react-icons/tb";
-import { Navigate } from 'react-router-dom';
+import { TbArrowBigRightLineFilled, TbHeart } from "react-icons/tb";
+import { Link, Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Head = () => {
@@ -38,6 +38,12 @@ const [search, setSearch] = useState("")
         Search for information about your favorite anime
         <TbArrowBigRightLineFilled/>
         </div>
+        <Link to="/favorite" className="link">
+      <div className="favorite">
+        Favorites
+        <TbHeart/>
+      </div>
+      </Link>
         <div className="search">
         <BiSearchAlt className='icon'/>
             <form onSubmit={handlerSubmit}>

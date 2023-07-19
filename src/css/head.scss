@@ -86,4 +86,14 @@ form input{
    .btn:hover{
     border: 3px solid #d98880;
    }
-   
+
+   .favorite{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s;
+   }
+   .favorite:hover{
+    color: #d98880;
+   }

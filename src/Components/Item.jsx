@@ -7,7 +7,7 @@ const Item = ({title, img, genres,animeId}) => {
   return (
     <div className="containerItem">
         <img src={img} alt="image" />
-        <span className='titleCard'>{title}</span>
+        <span className='titleCard'>{title.slice(0,20)}...</span>
         <span className='itemGen'>{limgenres.map((animeOne)=>{
           return(
             <Genero key={animeOne.mal_id} nombre={animeOne.name} />

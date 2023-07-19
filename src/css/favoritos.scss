@@ -1,0 +1,13 @@
+.containerFavite{
+    background: #242424;
+    color: #f4f6f7 ;
+    gap: 1rem;
+    min-height: 100vh;
+}
+
+.itemsFav{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}

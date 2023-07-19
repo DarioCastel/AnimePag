@@ -1,11 +1,12 @@
 import "../css/detalle.scss";
 import { TbArrowBigLeftLinesFilled, TbHeartFilled, TbTrophyFilled, TbThumbUpFilled} from "react-icons/tb";
 
-import Head from "./Head";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+
+import Head from "./Head";
 import Sinapsis from "./Sinapsis";
 import Trailer from "./Trailer";
 import Capitulos from "./Capitulos";
@@ -16,10 +17,12 @@ const Details = () => {
     const urlParams = new URLSearchParams(valores);
     var idAnime = urlParams.get('id');
 
+    const [like, setLike] = useState("like")
     const [list, setList] = useState([])
     const [menu, setMenu] = useState("sinapsis")
 
   const endPoint=`https://api.jikan.moe/v4/anime/${idAnime}/full`
+
 
   useEffect(() => {
     axios.get(endPoint)
@@ -31,8 +34,51 @@ const Details = () => {
   .catch(error =>{
     Swal.fire(`Se produjo un error ${error}`)
   })
-  }, [setList])
+  let listaAnimeFavoritos = localStorage.getItem("listFav")
+  handleValidation(listaAnimeFavoritos)
+  var temporalArray
 
+    if (listaAnimeFavoritos === null){
+      temporalArray =  []
+    }else{
+      temporalArray = JSON.parse(listaAnimeFavoritos)
+    }
+    handleValidation(temporalArray)
+  }, [])
+
+  const handleValidation=(data)=>{
+    data.map((temp)=>{
+      if (temp.id == list.mal_id){
+        setLike("dislike")
+      }else{
+        setLike("like")
+      }
+    })
+  }
+
+  const handleLike=()=>{
+    const dataAnime={
+      id:list.mal_id,
+      img:list.images.jpg.large_image_url,
+      title:list.title,
+      genre:list.genres
+    }
+    
+    let listaAnimeFavoritos = localStorage.getItem("listFav")
+    
+    var temporalArray
+
+    if (listaAnimeFavoritos === null){
+      temporalArray =  []
+    }else{
+      temporalArray = JSON.parse(listaAnimeFavoritos)
+    }
+    handleValidation(temporalArray)
+    temporalArray.push(dataAnime)
+    localStorage.setItem("listFav",JSON.stringify(temporalArray))
+    console.log(temporalArray)
+  }
+  
 
   return (
     <>
@@ -58,10 +104,12 @@ const Details = () => {
                       <span> <TbTrophyFilled/> {list.rank}</span>
                     </div>
                     <div className="infoFav">
-                      <button>
-                      <TbThumbUpFilled/>
-                      </button>
-                      <span> LIKE</span>
+                    <button className="button btnlike" onClick={handleLike}>
+                    <span className="button_lg">
+                      <span className="button_sl"></span>
+                      <span className="button_text"> {like === "like"? "like":"dislike"}</span>
+                    </span>
+                  </button>
                     </div>
                 </div>
             </div>
