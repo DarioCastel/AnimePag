@@ -1,5 +1,5 @@
 import "../css/detalle.scss";
-import { TbArrowBigLeftLinesFilled, TbHeartFilled, TbTrophyFilled, TbThumbUpFilled} from "react-icons/tb";
+import { TbArrowBigLeftLinesFilled, TbHeartFilled, TbTrophyFilled} from "react-icons/tb";
 
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -16,8 +16,9 @@ const Details = () => {
   const valores = window.location.search;
     const urlParams = new URLSearchParams(valores);
     var idAnime = urlParams.get('id');
+    const listaAnimeFavoritos = localStorage.getItem("listFav")
 
-    const [like, setLike] = useState("like")
+    const [like, setLike] = useState(false)
     const [list, setList] = useState([])
     const [menu, setMenu] = useState("sinapsis")
 
@@ -34,27 +35,26 @@ const Details = () => {
   .catch(error =>{
     Swal.fire(`Se produjo un error ${error}`)
   })
-  let listaAnimeFavoritos = localStorage.getItem("listFav")
-  handleValidation(listaAnimeFavoritos)
-  var temporalArray
+
+  let temporalArray
 
     if (listaAnimeFavoritos === null){
       temporalArray =  []
     }else{
       temporalArray = JSON.parse(listaAnimeFavoritos)
     }
+    
     handleValidation(temporalArray)
   }, [])
 
   const handleValidation=(data)=>{
-    data.map((temp)=>{
-      if (temp.id == list.mal_id){
-        setLike("dislike")
-      }else{
-        setLike("like")
+    data.map((tem) => {
+      if (tem.id == idAnime) {
+        setLike(true);
       }
-    })
-  }
+    });
+    }
+  
 
   const handleLike=()=>{
     const dataAnime={
@@ -73,12 +73,21 @@ const Details = () => {
     }else{
       temporalArray = JSON.parse(listaAnimeFavoritos)
     }
+
     handleValidation(temporalArray)
-    temporalArray.push(dataAnime)
-    localStorage.setItem("listFav",JSON.stringify(temporalArray))
-    console.log(temporalArray)
-  }
-  
+    if(!like){
+      temporalArray.push(dataAnime)
+      localStorage.setItem("listFav",JSON.stringify(temporalArray))
+      setLike(true)
+    }
+
+    if(like){
+      temporalArray.push(dataAnime)
+      temporalArray = temporalArray.filter(anime=> anime.id !== dataAnime.id)
+      localStorage.setItem("listFav",JSON.stringify(temporalArray))
+      setLike(false)
+    } 
+    }
 
   return (
     <>
@@ -107,7 +116,10 @@ const Details = () => {
                     <button className="button btnlike" onClick={handleLike}>
                     <span className="button_lg">
                       <span className="button_sl"></span>
-                      <span className="button_text"> {like === "like"? "like":"dislike"}</span>
+                      <span className="button_text"> 
+                      {like && "DISLIKE"}
+                      {!like && "LIKE"}
+                      </span>
                     </span>
                   </button>
                     </div>
@@ -137,6 +149,5 @@ const Details = () => {
       </div>
     </>
   );
-};
-
-export default Details;
+  }
+export default Details

@@ -17,8 +17,6 @@ const Favoritos = () => {
     }
     setList(temporalArray)
   }, [])
-  
-
 
   return (
     <>

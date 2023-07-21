@@ -11,7 +11,7 @@ const [search, setSearch] = useState("")
   const handlerSubmit =(e)=>{
     e.preventDefault()
     setSearch(e.target.search.value.trim())
-    if (search == ""){
+    if (search.length === 0){
       return(
         Swal.fire('need a Anime/Manga name')
       )
